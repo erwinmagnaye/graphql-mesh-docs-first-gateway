@@ -10,12 +10,12 @@
     "build": "echo \"noop\";"
   },
   "dependencies": {
-    "@graphql-mesh/cli": "^0.66.0",
-    "@graphql-mesh/graphql": "^0.23.0",
-    "@graphql-mesh/grpc": "^0.21.3",
-    "@graphql-mesh/openapi": "^0.24.4",
-    "@graphql-mesh/transform-filter-schema": "^0.14.38",
-    "@graphql-mesh/transform-rename": "^0.12.28",
-    "graphql": "^16.3.0"
+    "@graphql-mesh/cli": "^0.82.23",
+    "@graphql-mesh/graphql": "^0.34.6",
+    "@graphql-mesh/grpc": "^0.29.10",
+    "@graphql-mesh/openapi": "^0.35.17",
+    "@graphql-mesh/transform-filter-schema": "^0.15.16",
+    "@graphql-mesh/transform-rename": "^0.14.14",
+    "graphql": "^16.6.0"
   }
 }

@@ -11,11 +11,11 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^2.6.2",
-    "@graphql-codegen/typescript": "^2.4.8",
-    "@graphql-codegen/typescript-resolvers": "^2.6.1",
+    "@graphql-codegen/cli": "^3.2.1",
+    "@graphql-codegen/typescript": "^3.0.1",
+    "@graphql-codegen/typescript-resolvers": "^3.1.0",
     "@graphql-yoga/node": "^2.0.0",
-    "graphql": "^16.3.0"
+    "graphql": "^16.6.0"
   },
   "devDependencies": {
     "esbuild": "^0.14.29"

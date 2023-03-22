@@ -2,7 +2,7 @@ sources:
   - name: Books
     handler:
       openapi:
-        baseUrl: http://localhost:3002/
+        endpoint: http://localhost:3002/
         source: ../books-service/openapi3-definition.json
     transforms:
       - filterSchema:
@@ -29,6 +29,7 @@ sources:
               - productCategory
               - entity
             newFieldName: hoistedProductCategory
+      - hoist-field:
           - typeName: Book
             pathConfig:
               - entity

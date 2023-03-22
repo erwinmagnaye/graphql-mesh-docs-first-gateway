@@ -2,7 +2,7 @@ sources:
   - name: Books
     handler:
       jsonSchema:
-        baseUrl: http://localhost:3002
+        endpoint: http://localhost:3002
         operations:
           - type: Query
             field: book
