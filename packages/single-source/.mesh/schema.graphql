@@ -18,9 +18,35 @@ type Query {
 
 type Book {
   authorId: String!
-  categorieId: String!
+  categoryId: String!
   id: String!
   title: String!
+  hoistedProductCategory: ProductCategoryEntity!
+  hoistedTitle: TitleEntity!
+}
+
+type Entity {
+  otherProp: String!
+  productCategory: ProductCategory!
+  title: Title2!
+}
+
+type ProductCategory {
+  otherProp: String!
+}
+
+type ProductCategoryEntity {
+  displayString: String!
+  otherProp: String!
+}
+
+type Title2 {
+  otherProp: String!
+}
+
+type TitleEntity {
+  displayString: String!
+  otherProp: String!
 }
 
 type Category {

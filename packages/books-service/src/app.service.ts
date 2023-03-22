@@ -19,12 +19,46 @@ const books: Book[] = [
     title: 'Illusion Perdues',
     authorId: '1',
     categorieId: '1',
+    entity: {
+      productCategory: {
+        entity: {
+          displayString: 'Category: Illusion Perdues',
+          otherProp: ''
+        },
+        otherProp: ''
+      },
+      title: {
+        entity: {
+          displayString: 'Title: Illusion Perdues',
+          otherProp: ''
+        },
+        otherProp: ''
+      },
+      otherProp: ''
+    }
   },
   {
     id: '1',
     title: 'Dune',
     authorId: '0',
     categorieId: '0',
+    entity: {
+      productCategory: {
+        entity: {
+          displayString: 'Category: Dune',
+          otherProp: ''
+        },
+        otherProp: ''
+      },
+      title: {
+        entity: {
+          displayString: 'Title: Dune',
+          otherProp: ''
+        },
+        otherProp: ''
+      },
+      otherProp: ''
+    }
   },
 ];
 

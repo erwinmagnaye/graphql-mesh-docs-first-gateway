@@ -4,15 +4,37 @@ sources:
       openapi:
         baseUrl: http://localhost:3002/
         source: ../books-service/openapi3-definition.json
-transforms:
-  - filterSchema:
-      filters:
-        - Query.!book
-  - rename:
-      renames:
-        - from:
-            type: Query
-            field: categories
-          to:
-            type: Query
-            field: booksCategories
+    transforms:
+      - filterSchema:
+          filters:
+            - Query.!book
+      - rename:
+          renames:
+            - from:
+                type: Query
+                field: categories
+              to:
+                type: Query
+                field: booksCategories
+            - from:
+                type: Book
+                field: categorieId
+              to:
+                type: Book
+                field: categoryId
+      - hoist-field:
+          - typeName: Book
+            pathConfig:
+              - entity
+              - productCategory
+              - entity
+            newFieldName: hoistedProductCategory
+          - typeName: Book
+            pathConfig:
+              - entity
+              - title
+              - entity
+            newFieldName: hoistedTitle
+      - filterSchema:
+          filters:
+            - Book.!entity

@@ -42,9 +42,35 @@ export type QuerybooksCategoriesArgs = {
 
 export type Book = {
   authorId: Scalars['String'];
-  categorieId: Scalars['String'];
+  categoryId: Scalars['String'];
   id: Scalars['String'];
   title: Scalars['String'];
+  hoistedProductCategory: ProductCategoryEntity;
+  hoistedTitle: TitleEntity;
+};
+
+export type Entity = {
+  otherProp: Scalars['String'];
+  productCategory: ProductCategory;
+  title: Title2;
+};
+
+export type ProductCategory = {
+  otherProp: Scalars['String'];
+};
+
+export type ProductCategoryEntity = {
+  displayString: Scalars['String'];
+  otherProp: Scalars['String'];
+};
+
+export type Title2 = {
+  otherProp: Scalars['String'];
+};
+
+export type TitleEntity = {
+  displayString: Scalars['String'];
+  otherProp: Scalars['String'];
 };
 
 export type Category = {
@@ -126,6 +152,11 @@ export type ResolversTypes = ResolversObject<{
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Book: ResolverTypeWrapper<Book>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  Entity: ResolverTypeWrapper<Entity>;
+  ProductCategory: ResolverTypeWrapper<ProductCategory>;
+  ProductCategoryEntity: ResolverTypeWrapper<ProductCategoryEntity>;
+  Title2: ResolverTypeWrapper<Title2>;
+  TitleEntity: ResolverTypeWrapper<TitleEntity>;
   Category: ResolverTypeWrapper<Category>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 }>;
@@ -136,6 +167,11 @@ export type ResolversParentTypes = ResolversObject<{
   Int: Scalars['Int'];
   Book: Book;
   String: Scalars['String'];
+  Entity: Entity;
+  ProductCategory: ProductCategory;
+  ProductCategoryEntity: ProductCategoryEntity;
+  Title2: Title2;
+  TitleEntity: TitleEntity;
   Category: Category;
   Boolean: Scalars['Boolean'];
 }>;
@@ -147,9 +183,40 @@ export type QueryResolvers<ContextType = MeshContext, ParentType extends Resolve
 
 export type BookResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Book'] = ResolversParentTypes['Book']> = ResolversObject<{
   authorId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  categorieId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  categoryId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  hoistedProductCategory?: Resolver<ResolversTypes['ProductCategoryEntity'], ParentType, ContextType>;
+  hoistedTitle?: Resolver<ResolversTypes['TitleEntity'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type EntityResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Entity'] = ResolversParentTypes['Entity']> = ResolversObject<{
+  otherProp?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  productCategory?: Resolver<ResolversTypes['ProductCategory'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['Title2'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ProductCategoryResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['ProductCategory'] = ResolversParentTypes['ProductCategory']> = ResolversObject<{
+  otherProp?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ProductCategoryEntityResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['ProductCategoryEntity'] = ResolversParentTypes['ProductCategoryEntity']> = ResolversObject<{
+  displayString?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  otherProp?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type Title2Resolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Title2'] = ResolversParentTypes['Title2']> = ResolversObject<{
+  otherProp?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type TitleEntityResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['TitleEntity'] = ResolversParentTypes['TitleEntity']> = ResolversObject<{
+  displayString?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  otherProp?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -162,6 +229,11 @@ export type CategoryResolvers<ContextType = MeshContext, ParentType extends Reso
 export type Resolvers<ContextType = MeshContext> = ResolversObject<{
   Query?: QueryResolvers<ContextType>;
   Book?: BookResolvers<ContextType>;
+  Entity?: EntityResolvers<ContextType>;
+  ProductCategory?: ProductCategoryResolvers<ContextType>;
+  ProductCategoryEntity?: ProductCategoryEntityResolvers<ContextType>;
+  Title2?: Title2Resolvers<ContextType>;
+  TitleEntity?: TitleEntityResolvers<ContextType>;
   Category?: CategoryResolvers<ContextType>;
 }>;
 
@@ -190,12 +262,6 @@ export type Query = {
   /**
    *
    *
-   * Equivalent to GET /books/{id}
-   */
-  book?: Maybe<Book>;
-  /**
-   *
-   *
    * Equivalent to GET /books
    */
   books?: Maybe<Array<Maybe<Book>>>;
@@ -204,7 +270,7 @@ export type Query = {
    *
    * Equivalent to GET /categories
    */
-  categories?: Maybe<Array<Maybe<Category>>>;
+  booksCategories?: Maybe<Array<Maybe<Category>>>;
 };
 
 
@@ -213,15 +279,41 @@ export type QuerybooksArgs = {
 };
 
 
-export type QuerycategoriesArgs = {
+export type QuerybooksCategoriesArgs = {
   limit?: InputMaybe<Scalars['Int']>;
 };
 
 export type Book = {
   authorId: Scalars['String'];
-  categorieId: Scalars['String'];
+  categoryId: Scalars['String'];
   id: Scalars['String'];
   title: Scalars['String'];
+  hoistedProductCategory: ProductCategoryEntity;
+  hoistedTitle: TitleEntity;
+};
+
+export type Entity = {
+  otherProp: Scalars['String'];
+  productCategory: ProductCategory;
+  title: Title2;
+};
+
+export type ProductCategory = {
+  otherProp: Scalars['String'];
+};
+
+export type ProductCategoryEntity = {
+  displayString: Scalars['String'];
+  otherProp: Scalars['String'];
+};
+
+export type Title2 = {
+  otherProp: Scalars['String'];
+};
+
+export type TitleEntity = {
+  displayString: Scalars['String'];
+  otherProp: Scalars['String'];
 };
 
 export type Category = {
@@ -233,16 +325,12 @@ export type Category = {
     export type QueryBooksSdk = {
   /** 
 
-Equivalent to GET /books/{id} **/
-  book: InContextSdkMethod<BooksTypes.Query['book'], {}, MeshContext>,
-  /** 
-
 Equivalent to GET /books **/
   books: InContextSdkMethod<BooksTypes.Query['books'], BooksTypes.QuerybooksArgs, MeshContext>,
   /** 
 
 Equivalent to GET /categories **/
-  categories: InContextSdkMethod<BooksTypes.Query['categories'], BooksTypes.QuerycategoriesArgs, MeshContext>
+  booksCategories: InContextSdkMethod<BooksTypes.Query['booksCategories'], BooksTypes.QuerybooksCategoriesArgs, MeshContext>
 };
 
 export type MutationBooksSdk = {

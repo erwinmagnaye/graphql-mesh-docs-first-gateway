@@ -98,6 +98,85 @@
   "servers": [],
   "components": {
     "schemas": {
+      "ProductCategoryEntity": {
+        "type": "object",
+        "properties": {
+          "displayString": {
+            "type": "string"
+          },
+          "otherProp": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "displayString",
+          "otherProp"
+        ]
+      },
+      "ProductCategory": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "$ref": "#/components/schemas/ProductCategoryEntity"
+          },
+          "otherProp": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "entity",
+          "otherProp"
+        ]
+      },
+      "TitleEntity": {
+        "type": "object",
+        "properties": {
+          "displayString": {
+            "type": "string"
+          },
+          "otherProp": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "displayString",
+          "otherProp"
+        ]
+      },
+      "Title": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "$ref": "#/components/schemas/TitleEntity"
+          },
+          "otherProp": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "entity",
+          "otherProp"
+        ]
+      },
+      "Entity": {
+        "type": "object",
+        "properties": {
+          "productCategory": {
+            "$ref": "#/components/schemas/ProductCategory"
+          },
+          "title": {
+            "$ref": "#/components/schemas/Title"
+          },
+          "otherProp": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productCategory",
+          "title",
+          "otherProp"
+        ]
+      },
       "Book": {
         "type": "object",
         "properties": {
@@ -116,13 +195,17 @@
           "title": {
             "type": "string",
             "example": "Dune"
+          },
+          "entity": {
+            "$ref": "#/components/schemas/Entity"
           }
         },
         "required": [
           "id",
           "authorId",
           "categorieId",
-          "title"
+          "title",
+          "entity"
         ]
       },
       "Category": {
